@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>one of kind</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            padding: 15px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        header h1 {
+            color: #fff;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 15px;
+            cursor: pointer;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6b6b;
+        }
+
+        button {
+            background-color: #1e3a8a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            color: #333;
+            padding: 15px;
+            width: 200px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cart-items {
+            text-align: left;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .category-buttons {
+            margin: 20px 0;
+        }
+
+        .category-buttons button {
+            margin: 5px;
+            background-color: #1e3a8a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-buttons button:hover {
+            background-color: #ff6b6b;
+        }
+
+        .customization-options {
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .customization-options select,
+        .customization-options input {
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .cart-item button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-item button:hover {
+            background-color: #ff1a1a;
+        }
+
+        footer {
+            background-color: #1e3a8a;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* New Styles for Home Section */
+        #home {
+            position: relative;
+            text-align: center;
+            color: rgb(8, 53, 115);
+        }
+
+        #home img {
+            width: 100%;
+            height: auto;
+            max-height: 800px;
+            object-fit: cover;
+        }
+
+        #home h2 {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(8, 34, 105, 0.5);
+        }
+
+        #home p {
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(78, 61, 61, 0.5);
+        }
+
+        #home button {
+            position: absolute;
+            top: 30%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ONE OF KIND</h1>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('products')">Products</a></li>
+                <li><a onclick="showSection('cart')">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section">
+        <img src="p8.jpg" alt="Landscape Image">
+        <h2>Crafting Your Style</h2>
+        <p>Thread Your Story Which Is Truly One Of Its Kind</p>
+        <button onclick="showSection('products')">Shop Now</button>
+    </section>
+
+    <section id="products" class="section hidden">
+        <h2>Products</h2>
+        <div class="category-buttons">
+            <button onclick="filterProducts('women')">Women</button>
+        </div>
+        <div class="product-container" id="product-list"></div>
+    </section>
+
+    <section id="cart" class="section hidden">
+        <h2>Your Cart</h2>
+        <div class="cart-items"></div>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button id="checkout-button">Checkout</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 one of kind</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const products = [
+                { id: 1, name: "grape purple glitter floral printed duo dress", price: 10.00, img: "p1.jpeg", category: 'women' },
+                { id: 2, name: "mairu pants", price: 15.00, img: "p2.jpeg", category: 'women' },
+                { id: 3, name: "embroidered kurta pant set", price: 25.00, img: "p3.jpeg", category: 'women' },
+                { id: 4, name: "pink Glitter kalidar dress", price: 20.00, img: "p4.jpeg", category: 'women' },
+                { id: 5, name: "light green suit", price: 30.00, img: "p5.jpeg", category: 'women' },
+                { id: 6, name: "fasion bridal lace ", price: 9.00, img: "p6.jpeg", category: 'women' },
+                { id: 7, name: "DIY embroidered brooch", price: 4.00, img: "p7.jpeg", category: 'women' }
+            ];
+
+            const productList = document.getElementById("product-list");
+            const cartItemsContainer = document.querySelector(".cart-items");
+            const cartTotal = document.getElementById("cart-total");
+
+            let cart = [];
+
+            function updateCart() {
+                cartItemsContainer.innerHTML = "";
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    let div = document.createElement("div");
+                    div.classList.add("cart-item");
+                    div.innerHTML = `
+                        <span>${item.name} - $${item.price.toFixed(2)}</span>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(div);
+                    total += item.price;
+                });
+
+                cartTotal.textContent = total.toFixed(2);
+            }
+
+            function addToCart(productId, fabric, buttonStyle, size) {
+                const product = products.find(p => p.id === productId);
+                const customizedProduct = {
+                    ...product,
+                    fabric,
+                    buttonStyle,
+                    size,
+                    name: `${product.name} (${fabric}, ${buttonStyle}, ${size})`
+                };
+                cart.push(customizedProduct);
+                updateCart();
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                updateCart();
+            }
+
+            function filterProducts(category) {
+                productList.innerHTML = "";
+                const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+                filteredProducts.forEach(product => {
+                    let div = document.createElement("div");
+                    div.classList.add("product");
+
+                    div.innerHTML = `
+                        <img src="${product.img}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>$${product.price.toFixed(2)}</p>
+                        <div class="customization-options">
+                            <select id="fabric-${product.id}">
+                                <option value="Cotton">Cotton</option>
+                                <option value="Polyester">Polyester</option>
+                                <option value="Silk">Silk</option>
+                            </select>
+                            <select id="button-${product.id}">
+                                <option value="Plastic">Plastic Buttons</option>
+                                <option value="Metal">Metal Buttons</option>
+                                <option value="Wooden">Wooden Buttons</option>
+                            </select>
+                            <select id="size-${product.id}">
+                                <option value="S">Small</option>
+                                <option value="M">Medium</option>
+                                <option value="L">Large</option>
+                            </select>
+                        </div>
+                        <button onclick="addToCart(${product.id}, document.getElementById('fabric-${product.id}').value, document.getElementById('button-${product.id}').value, document.getElementById('size-${product.id}').value)">Add to Cart</button>
+                    `;
+
+                    productList.appendChild(div);
+                });
+            }
+
+            // Initialize with all products
+            filterProducts('all');
+
+            window.addToCart = addToCart;
+            window.removeFromCart = removeFromCart;
+            window.filterProducts = filterProducts;
+        });
+
+        function showSection(sectionId) {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("products").style.display = "none";
+            document.getElementById("cart").style.display = "none";
+
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        showSection("home");
+    </script>
+</body>
+</html>
